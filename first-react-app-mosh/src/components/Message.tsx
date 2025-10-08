@@ -10,6 +10,13 @@ const Message = () => {
     title: 'Tee',
     cost: 12,
   });
+  const [customer, setCustomer] = useState({
+    name: 'basmo',
+    address: {
+      city: 'Mannhiem',
+      zipcode: 67069,
+    },
+  });
   const chooseDrink = () => {
     setDrink({
       title: 'Tee',
@@ -17,12 +24,23 @@ const Message = () => {
     });
   };
 
+  const SetNewCodeZip = () => {
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, zipcode: 67061 },
+    });
+  };
+
   count++;
   return (
     <>
       <div> message {count}</div>
-      <button onClick={chooseDrink}> click</button>
+      <br />
+      <button onClick={chooseDrink}> change drink price</button>
       {drink.cost}
+      <br /> <br />
+      <button onClick={SetNewCodeZip}> change address Zipcode</button>
+      {customer.address.zipcode}
     </>
   );
 };
