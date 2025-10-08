@@ -5,9 +5,13 @@ import ListGroup from './components/ListGroup';
 import ListGroupStyle from './components/list-Group/listGroupStyle';
 import Like from './components/Like/Like';
 import Message from './components/Message';
+import Navbar from './components/Navbar';
+import Cart from './components/Cart';
 
 function App() {
   const items = ['New York', 'San Francisco', 'Tokyo', ' Cairo', 'Qena'];
+
+  const [products, setProducts] = useState(['Laptop', 'Phone', 'Headphones']);
   const handelSelectItem = (item: string) => {
     console.log({ item });
   };
@@ -35,11 +39,13 @@ function App() {
         }}
         color='success'
       />
-
       <ListGroupStyle></ListGroupStyle>
-      <Message />
-      {/* <Message />
-      <Message /> */}
+      <Message />{' '}
+      <div className='nav'>
+        Navbar
+        <Navbar setProductCount={products.length}></Navbar>
+      </div>
+      <Cart cartProducts={products} onClear={() => setProducts([])}></Cart>
     </div>
   );
 }
