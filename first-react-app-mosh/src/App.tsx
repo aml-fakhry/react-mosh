@@ -38,8 +38,8 @@ function App() {
 
       <ListGroupStyle></ListGroupStyle>
       <Message />
-      <Message />
-      <Message />
+      {/* <Message />
+      <Message /> */}
     </div>
   );
 }
