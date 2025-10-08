@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { useState } from 'react';
 
 // interface Props {
@@ -30,6 +31,18 @@ const Message = () => {
       address: { ...customer.address, zipcode: 67061 },
     });
   };
+  const [person, setPerson] = useState({
+    name: 'Alice',
+    address: { city: 'Paris', zip: 12345 },
+  });
+
+  const updateCity = () => {
+    setPerson(
+      produce(person, (draft) => {
+        draft.address.city = 'London';
+      })
+    );
+  };
 
   count++;
   return (
@@ -41,6 +54,9 @@ const Message = () => {
       <br /> <br />
       <button onClick={SetNewCodeZip}> change address Zipcode</button>
       {customer.address.zipcode}
+      <br /> <br />
+      <button onClick={updateCity}>Move to London</button> {person.name} lives
+      in {person.address.city}.
     </>
   );
 };
